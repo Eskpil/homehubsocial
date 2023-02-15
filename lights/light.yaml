@@ -1,0 +1,81 @@
+---
+esphome:
+  name: lights
+
+esp8266:
+  board: nodemcuv2
+
+output:
+  - platform: gpio
+    pin:
+      number: 15  # D8 for nodemcu (non-W)
+      mode: output
+    id: kitchen_1
+  - platform: gpio
+    pin:
+      number: 13 # D7
+      mode: output
+    id: bedroom_1
+  - platform: gpio
+    pin:
+      number: 12 # D6
+      mode: output
+    id: bathroom_1
+
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_password
+
+  ap:
+    ssid: "nodemcu test"
+    password: "test1234"
+
+captive_portal:
+api:
+ota:
+
+logger:
+  level: DEBUG
+
+light:
+  - platform: binary
+    name: "Bedroom"
+    id: light_1
+    output: bedroom_1
+  - platform: binary
+    name: "Kitchen"
+    id: light_2
+    output: kitchen_1
+  - platform: binary
+    name: "Bathroom"
+    id: light_3
+    output: bathroom_1
+
+
+sensor:
+  - platform: dht
+    pin: D5
+    temperature:
+      name: "House temperature"
+      id: "home_temperature"
+    humidity:
+      name: "Home room humidity"
+      id: "home_room_humidity"
+    update_interval: 5s
+
+# interval:
+#   - interval: 500ms
+#     then:
+#       - output.turn_on: kitchen
+#       - delay: 250ms
+#       - output.turn_off: kitchen
+#   - interval: 1000ms
+#     then:
+#       - output.turn_on: bedroom
+#       - delay: 250ms
+#       - output.turn_off: bedroom
+#   - interval: 1500ms
+#     then:
+#       - output.turn_on: bathroom
+#       - delay: 250ms
+#       - output.turn_off: bathroom

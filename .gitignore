@@ -1,3 +1,6 @@
+node_modules
+go.sum
 config
 .idea
 .esphome
+mounts/db

@@ -1,5 +1,8 @@
 # HomeHubSocial (HHS)
 
+![House](media/house.jpg)
+![Dashboards](media/dashboard.jpg)
+
 HomeHubSocial was the product of a innovation competition at
 middle school, where my team won. Around 150 students were assigned
 somewhat random groups. I luckily ended up with four tech inclined
